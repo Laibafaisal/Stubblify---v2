@@ -11,12 +11,6 @@ Stubble burning remains a leading cause of smog and air pollution in Punjab, Pak
 - ✅ Integrates **real-time weather and air quality data from APIs**  
 - ✅ Predictions are displayed on a **secure, user-authenticated Django dashboard**  
 
-## 🌟 Unique Value Proposition (USP)  
-The power of Stubblify lies in **early-warning insights**:  
-- 🛡️ Enables the **Punjab Safe Cities Authority (PSCA)** and policymakers to act proactively  
-- 🚒 Supports preventive action and rapid deployment of resources  
-- 📊 Helps monitor and evaluate **policy effectiveness**  
-
 ## 🌍 Impact  
 By combining **predictive accuracy** with **real-time usability**, Stubblify provides a transformative tool to:  
 - Reduce smog and pollution  
