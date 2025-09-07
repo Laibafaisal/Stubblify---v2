@@ -1,0 +1,12 @@
+{% load static %}
+<footer class="navbar" style="margin-top: auto;">
+    <div class="navbar-logo">
+        <img src="{% static 'images/logo.png' %}" alt="Stubblify Logo" style="height: 40px;">
+        <span>Stubblify © 2025</span>
+    </div>
+    <ul class="navbar-links">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'about' %}">About Us</a></li>
+        <li><a href="{% url 'contact' %}">Contact Us</a></li>
+    </ul>
+</footer>

@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - Stubblify{% endblock %}
+
+{% block content %}
+<div class="shared-container">
+
+    <h1>Stubblify - Spot to Stop</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="city" placeholder="Enter City Name" required>
+        <button type="submit" class="btn-green">Predict</button>
+    </form>
+
+    {% if prediction is not None %}
+    <div class="result">
+        <h2>Prediction for {{ city }}: {{ prediction }} fire counts</h2>
+
+        {# ✅ Fix: Don't mix HTML inside {% if %} line #}
+        {% if prediction|add:0 < 10 %} <div class="status-safe">✅ Status: Safe — No fire expected.
+    </div>
+    {% elif prediction|add:0 <= 30 %} <div class="status-risk">⚠️ Status: Risk — Monitor the situation.
+</div>
+{% else %}
+<div class="status-alert">❗ Status: High Alert — Take action immediately!</div>
+{% endif %}
+</div>
+{% endif %}
+
+{% if parameters %}
+<div class="parameters">
+    <h3>Fetched Parameters:</h3>
+    <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th style="text-align: right;">Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for key, value in parameters.items %}
+            <tr>
+                <td>
+                    {% if key == 'WD' %} Wind Direction (°)
+                    {% elif key == 'RH' %} Relative Humidity (%)
+                    {% elif key == 'WS' %} Wind Speed (m/s)
+                    {% elif key == 'AT' %} Air Temperature (°C)
+                    {% elif key == 'PM25' %} PM2.5 Concentration (µg/m³)
+                    {% elif key == 'MONTH' %} Month
+                    {% elif key == 'DAY_OF_YEAR' %} Day of the Year
+                    {% else %} {{ key }}
+                    {% endif %}
+                </td>
+                <td style="text-align: right;">{{ value }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+
+{% if error %}
+<div class="error" style="color: red; font-weight: bold;">❌ {{ error }}</div>
+{% endif %}
+
+<br>
+<a href="{% url 'logout' %}">Logout</a>
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const form = document.querySelector('form');
+    const loader = document.getElementById('loader');
+    form?.addEventListener('submit', () => {
+        loader.style.display = 'block';
+    });
+</script>
+{% endblock %}

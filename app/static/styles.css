@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f5f0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 10px;
+    width: 300px;
+    margin: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #5C8A37;
+    color: white;
+    border: none;
+    margin-left: 5px;
+}
+
+.result {
+    margin-top: 20px;
+    color: green;
+}
+
+.error {
+    margin-top: 20px;
+    color: red;
+}

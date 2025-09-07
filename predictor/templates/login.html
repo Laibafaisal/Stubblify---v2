@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login - Stubblify{% endblock %}
+
+{% block content %}
+<div class="container"
+    style="max-width: 400px; margin: 60px auto; padding: 20px; background: rgba(255,255,255,0.9); border-radius: 10px;">
+    <h2 style="text-align: center;">Login</h2>
+
+    {% if messages %}
+    <ul style="color: red; text-align: center; list-style: none; padding: 0;">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <form method="post" style="display: flex; flex-direction: column; gap: 10px;">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username" required style="padding: 10px;">
+        <input type="password" name="password" placeholder="Password" required style="padding: 10px;">
+        <button type="submit"
+            style="padding: 10px; background-color: #2e7d32; color: white; border: none; border-radius: 5px;">Login</button>
+    </form>
+    <p style="text-align: center;">Don't have an account? <a href="{% url 'signup' %}">Signup</a></p>
+</div>
+{% endblock %}
